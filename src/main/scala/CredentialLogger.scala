@@ -1,8 +1,7 @@
 //class CredentialLogger(){
   import scala.io.StdIn._
-
-
-
+  //Notes 1/18 -- need to create algorithm to upload input to user and then parse input saved at launch
+  //
 
   object CredentialLogger {
     private var sysUserName = ""
