@@ -11,18 +11,28 @@
     private val sysUserName = "TestDummy"
     //private var sysPassword = ""
     lazy val whereTo: String = readLine("What information are you looking for today? ")
-    lazy val webQuery: String = readLine("What website are you looking for? ")
+
 
     def website(): Unit = {
-      var doWhileSwitch = false
+      lazy val webQuery: String = readLine("What website are you looking for? ")
+      lazy val continue = readLine("Continue [Y/N]? ")
       //SQL SELECT-FROM to show website of choice
       println(
         s"""
            |Website option selected. What website
            |""".stripMargin)
-      do{
-        doWhileSwitch = true
-        }while (!doWhileSwitch)
+
+      //start of query
+      webQuery
+
+
+
+      //for end of query
+      continue
+      if (continue.toUpperCase == "Y")
+        website()
+      else println("Exiting Program...")
+
       //webQuery
       //println(whereTo)
     }
@@ -75,12 +85,16 @@
         println("pending")
       } else if (whereTo == "3") {
         println("pending")
-      } else if (whereTo == "cxl") {
+      } else if (whereTo.toLowerCase == "cxl") {
         cancelProgram()
-      } else if (whereTo == "admin"){
+      } else if (whereTo.toLowerCase == "admin"){
         admin()
       }
-      else println("Hello")
+      else{
+        println("Please enter a valid command.")
+        lazy val CredentialLogger.whereTo = readLine("What information are you looking for today? ")
+        main(args: Array[String])
+      }
 
 
 
