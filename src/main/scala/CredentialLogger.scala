@@ -1,8 +1,9 @@
 //class CredentialLogger(){
-  //import scala.sys.process._
+  import scala.sys.process._
   import scala.io.StdIn._
-  //Notes 1/18 -- need to create algorithm to upload input to user and then parse input saved at launch
+  import java.sql
 
+//Notes 1/18 -- need to create algorithm to upload input to user and then parse input saved at launch
 
   object CredentialLogger {
 
@@ -19,7 +20,7 @@
       //SQL SELECT-FROM to show website of choice
       println(
         s"""
-           |Website option selected. What website
+           |Website option selected.
            |""".stripMargin)
 
       //start of query
