@@ -1,14 +1,18 @@
-//class CredentialLogger(){
+
+
   import scala.sys.process._
   import scala.io.StdIn._
-  import java.sql
+  import java.sql._
+  //{Connection, DriverManager}
+
+
 
 //Notes 1/18 -- need to create algorithm to upload input to user and then parse input saved at launch
 
   object CredentialLogger {
 
-    //private val sysAdmin = "Admin"
-    //private val sysAdminPass = "P455W0rd"
+    //private val sysAdmin =
+    //private val sysAdminPass =
     private val sysUserName = "TestDummy"
     //private var sysPassword = ""
     lazy val whereTo: String = readLine("What information are you looking for today? ")
@@ -62,7 +66,7 @@
     }
     //def setUp(): Unit = {}
 
-    def main(args: Array[String]): Unit = {
+    def main(): Unit = {
       //setUp()
       //prompt1()
       //def website:String = "1"
@@ -93,18 +97,22 @@
       }
       else{
         println("Please enter a valid command.")
-        lazy val CredentialLogger.whereTo = readLine("What information are you looking for today? ")
-        main(args: Array[String])
+        //val CredentialLogger.whereTo = readLine("What information are you looking for today? ")
+        //main(args: Array[String])
       }
 
 
 
     }
   }
-//}
+
+
 
 //Unused Code
 /*
+- regex to parse for email address
+^([A-Za-z0-9\.*]*)\@{1}([A-z]*\.{1}(com|org|net|gov|edu){1})$
+
 def prompt1(): Unit = {
   println(
     s"""
