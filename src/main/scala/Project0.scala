@@ -13,12 +13,10 @@ object CredLogger {
   var connection:Connection = DriverManager.getConnection(url, username, password)
   //private val sysAdmin =
   //private val sysAdminPass =
-  val statement = connection.createStatement()
-  var testQuery = statement.executeQuery("SELECT * FROM project0.sql_user;")
+  //val statement = connection.createStatement()
+  //var testQuery = statement.executeQuery("SELECT * FROM project0.sql_user;")
   //println(testQuery)
-  while ( testQuery.next() ) {
-    println(testQuery.getString(1)+", " +testQuery.getString(2) +", " +testQuery.getString(3), testQuery.getString(4),testQuery.getString(5),testQuery.getString(6))
-  }
+
   val sysUserName = readLine("What is your Username? ")
   //var sysPassword = readLine("What is your Username? ")
 

@@ -24,7 +24,42 @@ object GetData extends App {
       |Returning results are in this order:
       |[Website] - [Username], [Password], [Email Address]
       |--------------------------------""".stripMargin
+  val msgAdmin =
+    """--------------------------------
+      |Returning results are in this order:
+      |[Row Index] - [Username], [Password]
+      |--------------------------------""".stripMargin
 
+  //C - ADMIN create application account
+
+  def createAppAcct(): Unit ={
+
+    val statement = connection.createStatement()
+    statement.execute("use project0;")
+    println(msgAdmin)
+    var newUsername = readLine("\nInput your new Username for this application: ")
+    var newPassword = readLine("\nInput your chosen password for this application: ")
+
+    val addNewAcct = statement.executeUpdate(f"INSERT INTO sql_Admin(`cl_user`, `cl_pass`) VALUES('$newUsername', '$newPassword');")
+    println("\nNew credentials are added. Returning the new info from our database to verify changes:\n")
+    val getChanges = statement.executeQuery(f"SELECT * FROM project0.sql_admin;") //WHERE cl_user = '$TESTusername';")
+    while ( getChanges.next() ) {
+      println(getChanges.getString(1) + " - " + getChanges.getString(2) + ", " + getChanges.getString(3))
+    }
+  }
+
+  //R - ADMIN get admin table
+
+  def getAdmin(): Unit ={
+    val statement = connection.createStatement()
+    statement.execute("use project0;")
+    println(msgAdmin)
+    println("\nReturning all application users:\n")
+    val getAdminUsers = statement.executeQuery(f"SELECT * FROM project0.sql_admin;") //WHERE cl_user = '$TESTusername';")
+    while ( getAdminUsers.next() ) {
+      println(getAdminUsers.getString(1) + "\t-\t " + getAdminUsers.getString(2) + ", " + getAdminUsers.getString(3)) //+ ", " + getAdminUsers.getString(4)) //testQuery1.getString(5), testQuery1.getString(6))
+    }
+  }
 
   //C - create new website data to sql_user table - should be used with the read function below
   def createWebsite(): Unit ={
@@ -303,9 +338,14 @@ def delEmail(): Unit ={
 
 
 }
+  //CRU
+  //createAppAcct()
+  //getAdmin()
+
   //CRUD - Website
   //createWebsite()
   //getAllWebsites()
+  //createWebsite()
   //getCertainWebsite()
   //updateWebsite()
   // delWebsite()
